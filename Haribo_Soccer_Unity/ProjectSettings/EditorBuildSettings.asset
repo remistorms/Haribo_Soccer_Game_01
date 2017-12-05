@@ -8,3 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_REM_Resources/Scenes/Boot_Scene.unity
     guid: eb05839e470c9764c98a53b6aa50c126
+  - enabled: 1
+    path: Assets/_REM_Resources/Scenes/Menu_Scene.unity
+    guid: 6e73583c1020dff458497d5d18c7b8a2
+  - enabled: 1
+    path: Assets/_REM_Resources/Scenes/Game_Scene.unity
+    guid: bca273afbf8bb13419d135c63d311822
