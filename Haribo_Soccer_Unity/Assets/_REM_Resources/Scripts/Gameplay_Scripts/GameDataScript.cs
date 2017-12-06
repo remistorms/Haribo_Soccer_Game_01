@@ -15,6 +15,7 @@ public class GameDataScript : MonoBehaviour {
 	public string ticket;
 	public string plaza;
 	public string tienda;
+	public string premio_seleccionado;
 
 	[Header("Resultados")]
 	public int puntos;
