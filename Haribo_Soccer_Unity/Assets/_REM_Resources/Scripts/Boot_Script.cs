@@ -30,17 +30,19 @@ public class Boot_Script : MonoBehaviour {
 
 	public void SwithScenes(int scene_number)
 	{
-		SceneManager.LoadScene (scene_number);
+		SceneManager.LoadSceneAsync (scene_number);
 	}
 
 	public void SwithScenes(string scene_name)
 	{
-		SceneManager.LoadScene (scene_name);
+		SceneManager.LoadSceneAsync (scene_name);
 	}
 
 	public void SetVRMode(bool myBool)
 	{
 		UnityEngine.XR.XRSettings.enabled = myBool;
 	}
+
+
 		
 }

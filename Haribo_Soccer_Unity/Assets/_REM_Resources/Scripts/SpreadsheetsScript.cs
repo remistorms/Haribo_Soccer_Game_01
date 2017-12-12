@@ -58,6 +58,8 @@ public class SpreadsheetsScript : MonoBehaviour {
 
 	void CheckConnection()
 	{
+		Debug.Log ("CHECKIN CONNECTION");
+
 		switch (Application.internetReachability)
 		{
 		case NetworkReachability.NotReachable:
@@ -83,12 +85,12 @@ public class SpreadsheetsScript : MonoBehaviour {
 
 	void ClicLoad()
 	{
-		Boot_Script.instance.SwithScenes (1);
+		ProgressUI.instance.LoadSceneRoutine (1);
 	}
 
 	public void GetGameVariables()
 	{
-		//Debug.Log ("GETTING GAME VARIABLES FROM GOOGLE SPREADSHEETS");
+		Debug.Log ("GETTING GAME VARIABLES FROM GOOGLE SPREADSHEETS");
 
 		//Target Mesh Variables
 		float target_mesh_pos_x =  float.Parse(haribo_worksheets [0].GetCellData ("B", 3).value);
