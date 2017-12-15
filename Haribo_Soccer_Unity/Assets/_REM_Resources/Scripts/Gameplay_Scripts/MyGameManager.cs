@@ -27,7 +27,7 @@ public class MyGameManager : MonoBehaviour {
 
 		for (int i = 0; i < 30; i++) 
 		{
-			shooter_reference.Shoot ();
+			//shooter_reference.Shoot ();
 			yield return new WaitForSeconds (1);
 		}
 

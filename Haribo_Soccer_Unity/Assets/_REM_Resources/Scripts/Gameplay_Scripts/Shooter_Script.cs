@@ -8,6 +8,8 @@ public class Shooter_Script : MonoBehaviour {
 	public float minForce, maxForce;
 	public GameObject ball_prefab;
 	public GameObject target_mesh;
+	public GameObject bear_prefab;
+	public float force;
 
 	void Start()
 	{
@@ -17,32 +19,21 @@ public class Shooter_Script : MonoBehaviour {
 	IEnumerator ShootRoutine()
 	{
 		//Spawn bear and ball
-
-		//Show Shot UI
-
+		Transform spawnPoint = ball_spawn_points[Random.Range(0, ball_spawn_points.Length)];
+		GameObject spawned_bear = Instantiate (bear_prefab, spawnPoint.position, spawnPoint.rotation) as GameObject;
+		GameObject ball = Instantiate (ball_prefab,spawned_bear.transform.position + spawned_bear.transform.forward * 3, Quaternion.identity) as GameObject;
+		//FORCE
+		force = Random.Range(minForce, maxForce);
+		spawned_bear.GetComponent<PanditaScript> ().StartPanditaRoutine (minForce, maxForce, force, ball);
 		//Shoot
 
 		//Wait and repeat
 		yield return new WaitForSeconds(1);
 	}
 
-	public void Shoot()
+	public void Shoot(GameObject ball_to_shoot)
 	{
-		//Spawn ball and Bear at selected points
-		Transform point = ball_spawn_points[Random.Range(0, ball_spawn_points.Length)];
-		GameObject ball = Instantiate(ball_prefab, point.transform.position, Quaternion.identity) as GameObject;
-		//Select random point to shoot
-
-		Vector3 randomPointToShoot = target_mesh.transform.position + (new Vector3 (
-			                             Random.Range (-target_mesh.transform.localScale.x / 2, target_mesh.transform.localScale.x / 2),
-			                             Random.Range (-target_mesh.transform.localScale.y / 2, target_mesh.transform.localScale.y / 2),
-			                             0));
-		//Get direction vector
-		Vector3 shoot_direction =  randomPointToShoot - ball.transform.position;
-
-		//Add force to ball
-		float force = Random.Range(minForce, maxForce);
-		ball.GetComponent<Rigidbody> ().AddForce (shoot_direction * force, ForceMode.Force); 
+		
 
 	}
 
@@ -50,7 +41,8 @@ public class Shooter_Script : MonoBehaviour {
 	{
 		if (Input.GetKeyDown(KeyCode.S)) 
 		{
-			Shoot ();	
+			StartCoroutine (ShootRoutine ());
 		}
 	}
+
 }
